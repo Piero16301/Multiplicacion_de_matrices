@@ -1,11 +1,10 @@
-// CPP Program to multiply two matrix using pthreads
 #include <bits/stdc++.h>
 using namespace std;
 
-// maximum size of matrix
+// Tamaño máximo de la matriz
 #define MAX 4
 
-// maximum number of threads
+// Máximo número de hilos
 #define MAX_THREAD 4
 
 int matA[MAX][MAX];
@@ -16,7 +15,7 @@ int step_i = 0;
 void* multi(void* arg) {
     int core = step_i++;
 
-    // Each thread computes 1/4th of matrix multiplication
+    // Cada hilo va a calcular 1/4 de la multiplicación
     for (int i = core * MAX / 4; i < (core + 1) * MAX / 4; i++) {
         for (int j = 0; j < MAX; j++) {
             for (int k = 0; k < MAX; k++) {
@@ -26,10 +25,8 @@ void* multi(void* arg) {
     }
 }
 
-// Driver Code
-int main()
-{
-    // Generating random values in matA and matB
+int main() {
+    // Se generan valores aleatorios (0-9) para las matrices A y B
     for (int i = 0; i < MAX; i++) {
         for (int j = 0; j < MAX; j++) {
             matA[i][j] = rand() % 10;
@@ -37,7 +34,7 @@ int main()
         }
     }
 
-    // Displaying matA
+    // Se imprime la matriz A
     cout << endl
          << "Matrix A" << endl;
     for (int i = 0; i < MAX; i++) {
@@ -46,7 +43,7 @@ int main()
         cout << endl;
     }
 
-    // Displaying matB
+    // Se imprime la matriz B
     cout << endl
          << "Matrix B" << endl;
     for (int i = 0; i < MAX; i++) {
@@ -55,20 +52,20 @@ int main()
         cout << endl;
     }
 
-    // declaring four threads
+    // Se declaran los 4 hilos
     pthread_t threads[MAX_THREAD];
 
-    // Creating four threads, each evaluating its own part
+    // Se crean 4 hilos, cada uno calcula 1 fila del resultado
     for (int i = 0; i < MAX_THREAD; i++) {
         int* p;
         pthread_create(&threads[i], NULL, multi, (void*)(p));
     }
 
-    // Joining and waiting for all threads to complete
+    // Espera a que todos los hilos terminen
     for (int i = 0; i < MAX_THREAD; i++)
         pthread_join(threads[i], NULL);
 
-    // Displaying the result matrix
+    // Se imprime el resultado de la matriz
     cout << endl
          << "Multiplication of A and B" << endl;
     for (int i = 0; i < MAX; i++) {
