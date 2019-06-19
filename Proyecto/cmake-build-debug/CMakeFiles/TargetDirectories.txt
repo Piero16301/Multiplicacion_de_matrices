@@ -1,0 +1,3 @@
+/home/piero/Documents/Multiplicacion_de_matrices/Proyecto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/piero/Documents/Multiplicacion_de_matrices/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir
+/home/piero/Documents/Multiplicacion_de_matrices/Proyecto/cmake-build-debug/CMakeFiles/edit_cache.dir
