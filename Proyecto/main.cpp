@@ -32,7 +32,7 @@ void* multi(void* arg) {
 int main() {
 
     //Multiplicacion con algoritmo concurrente
-    cout << "ALGORITMO CONCURRENTE" << endl;
+    cout << "\t\tALGORITMO CONCURRENTE" << endl;
 
     // Se generan valores aleatorios (0-9) para las matrices A y B
     srand(time(NULL));
@@ -88,7 +88,7 @@ int main() {
     cout << endl << "Tiempo de ejecucion de la multiplicacion: " << secs*1000 << " milisegundos" << endl << endl;
 
     //Multiplicacion con algoritmo NO concurrente
-    cout << "ALGORITMO NO CONCURRENTE" << endl;
+    cout << "\t\tALGORITMO NO CONCURRENTE" << endl;
 
     //int m1_row, m1_col, m2_row, m2_col;
 
