@@ -2,74 +2,78 @@
 #define PROYECTO_MIMATRIZ_H
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 template <class T>
 class Mimatriz {
+
+public:
     T** arr;
     int row;
     int col;
 
-    void allocate( const int& row, const int& col )
-    {
+    void allocate( const int& row, const int& col ) {
         //save
         this->row = row;
         this->col = col;
 
         // Allocate.
         arr = new T*[row];
-        for ( int i = 0; i < row; i++ )
-        {
+        for ( int i = 0; i < row; i++ ) {
             arr[i] = new T[col];
         }
     }
 
-public:
     Mimatriz() : arr{nullptr}, row{0}, col{0} {
         std::cout << "Template de clase generica" << std::endl;
     }
+
     Mimatriz(const int& row, const int& col ){
         allocate(row, col);
     }
 
-
     T get_column() {
         //std::cout << "hello col" << std::endl;
         return this->col;
-
     }
 
     T get_row() {
         return this->row;
+    }
 
-    }
     void llenarMatriz(){
+        srand(time(NULL));
+        int num = 0;
         for (int f=0;f<this->row;f++) {
             for (int c = 0; c < this->col; c++) {
-                std::cin >> arr[f][c];
+                num = 1+rand()%(9+1-1); //Numeros aleatorios entre 1 y 9
+                //std::cout << "M[" << f << "][" << c << "]: " << num << std::endl;
+                arr[f][c] = num;
+                //std::cin >> arr[f][c];
             }
         }
     }
+
     void mostrarMatriz(){
-        std::cout << "Mostrar matriz: " << std::endl;
         for (int f=0;f<this->row;f++) {
             for (int c = 0; c < this->col; c++) {
-                std::cout << arr[f][c] << " ";
+                std::cout << std::setw(4) << arr[f][c] << " ";
             }
             std::cout << std::endl;
         }
         std::cout << std::endl;
     }
-    Mimatriz<T> operator+(Mimatriz<T> m2){
-        Mimatriz<int> m3(this->row,this->col);
-        std::cout << "Ejecucion de suma: " << std::endl;
-        for (int f=0;f<this->row;f++) {
-            for (int c = 0; c < this->col; c++) {
-                std::cout << arr[f][c] + m2.arr[f][c]<< " ";
-                m3.arr[f][c] = arr[f][c] + m2.arr[f][c];
+
+    Mimatriz<T> operator*(Mimatriz<T> m2) {
+        Mimatriz<T> m3(this->row, this->col);
+        for (int i = 0; i < this->row; i++) {
+            for (int j = 0; j < this->col; j++) {
+                for (int k = 0; k < this->row; k++) {
+                    m3.arr[i][j] += arr[i][k] * m2.arr[k][j];
+                }
             }
-            std::cout << std::endl;
         }
-        std::cout << std::endl;
         return m3;
     }
 

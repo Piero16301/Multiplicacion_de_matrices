@@ -6,7 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/home/piero/Documents/Multiplicacion_de_matrices/Proyecto/MiMatriz.h
+iostream
+-
+stdlib.h
+-
+time.h
+-
+
 /home/piero/Documents/Multiplicacion_de_matrices/Proyecto/main.cpp
 bits/stdc++.h
 -
+MiMatriz.h
+/home/piero/Documents/Multiplicacion_de_matrices/Proyecto/MiMatriz.h
 
