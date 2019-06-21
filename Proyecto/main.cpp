@@ -106,8 +106,8 @@ int main() {
     cout << "Ingresar columnas de m2: ";
     cin >> m2_col;*/
 
-    Mimatriz<TipoDato> m1(4,4);
-    Mimatriz<TipoDato> m2(4,4);
+    Mimatriz<TipoDato> m1(MAX,MAX);
+    Mimatriz<TipoDato> m2(MAX,MAX);
 
     cout << endl << "Matriz A" << endl;
     m1.llenarMatriz();
@@ -117,7 +117,7 @@ int main() {
     m2.llenarMatriz();
     m2.mostrarMatriz();
 
-    Mimatriz<TipoDato> m3(4,4);
+    Mimatriz<TipoDato> m3(MAX,MAX);
     t0 = clock();
     m3 = m1 * m2;
     t1 = clock();
